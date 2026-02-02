@@ -73,8 +73,19 @@ class HashtagsValidator(BaseValidator):
         super().__init__(name)
         self.regexpattern = r'#[a-zA-Z0-9_]+'
 
+class PhoneValidator(BaseValidator):
+    pass
+    # def __init__(self, name):
+    #     super().__init__(name)
+    #     self.regexpattern = r'\b\d{4}[\s.-]?\d{4}[\s.-]?\d{4}[\s.-]?\d{4}\b'
+    
 
-# Reading Data
+
+class CreditCardNumberValidator:
+    pass
+
+
+# Reading Data from our sample text.
 def read_input_file(filename="sample_input.txt"):
     try:
         with open(filename, 'r', encoding='utf-8') as f:
@@ -109,11 +120,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-class PhoneValidator:
-    pass
 
-class CreditCardNumberValidator:
-    pass
 
 
 
