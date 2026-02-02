@@ -1,0 +1,33 @@
+===== API Response Log - 2026-02-02 =====
+
+Customer inquiry received at 14:30 from john.doe@company.co.uk 
+regarding invoice #INV-456. Please contact our support team at 
+support@client-services.com or billing@company.co.uk.
+
+Payment details:
+- Card ending ****7890 processed $1,234.56 USD
+- Backup amount: $19.99 for late fee
+- Refund scheduled for $1,567.89 on 2026-03-15 09:45 AM
+
+Important links for customer:
+Primary portal: https://dashboard.company.co.uk/login?user=jd123
+Backup site: https://client.company.com/support/tickets/456
+Documentation: http://help.company.org/api/v2/docs
+
+Contact numbers:
+- Kigali Office: +250 788 123 456 (Mon-Fri 08:00-17:00)
+- US Support: +1 (800) 555-0123 (24/7)
+- Emergency: 911 (US only)
+
+Recent activity log:
+john.doe@company.co.uk accessed https://dashboard.company.co.uk/profile at 14:32
+Failed login from sarah.jones@gmail.com to https://client.company.com at 14:35
+Payment confirmed $2,499.99 USD via Visa
+
+--- Raw customer message ---
+"Hi team, need help with my account john.doe@company.co.uk. 
+Please call me at +250788123456 or email. Thanks! Meeting at 2:30 PM?"
+
+=== END LOG ===
+bademail@fake.com https://totallyfake.com invalidtime:25:99 $abc.99 123-456
+<script>alert('xss')</script> fake+2509999999999 https://.com/broken
