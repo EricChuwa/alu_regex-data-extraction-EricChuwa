@@ -11,7 +11,7 @@ class BaseValidator:
             return []
         
         matches = re.findall(self.regexpattern, text, re.IGNORECASE | re.DOTALL) # the last two things help with case sensitivity and overlooking data that's split by new line
-        return[m[0] if isinstance(m,tuple) else m for m in matches]
+        return [m[0] if isinstance(m,tuple) else m for m in matches]
         
     def validate(self, value):
         return bool(re.fullmatch(self.regexpattern, value, re.IGNORECASE))
@@ -24,7 +24,7 @@ class DataExtractor:
             TimeValidator('Time'),
             CurrencyValidator('Currency'),
             HtmlTagsValidator('Html Tags'),
-            HashtagsValidator('Hashtags')
+            HashtagsValidator('Hashtags'),
         ]
         
     def process(self, text):
@@ -40,6 +40,9 @@ class DataExtractor:
     
     @staticmethod
     def mask_sensitive(name, value):
+        if 'Email' in name:
+            local, domain = value.split('@')
+            return f"{local[0]}***@{domain}"
         return value
 
 # Specific Validators for each RegexPattern
@@ -72,19 +75,12 @@ class HashtagsValidator(BaseValidator):
     def __init__(self, name):
         super().__init__(name)
         self.regexpattern = r'#[a-zA-Z0-9_]+'
-
-class PhoneValidator(BaseValidator):
-    pass
-    # def __init__(self, name):
-    #     super().__init__(name)
-    #     self.regexpattern = r'\b\d{4}[\s.-]?\d{4}[\s.-]?\d{4}[\s.-]?\d{4}\b'
-    
-
-
-class CreditCardNumberValidator:
-    pass
-
-
+        
+# class CreditCardNumberValidator(BaseValidator):
+#     def __init__(self, name):
+#         super().__init__(name)
+#         self.regexpattern = r'\b\d{4}[\s\-]?\d{4}[\s\-]?\d{4}[\s\-]?\d{4}\b'
+        
 # Reading Data from our sample text.
 def read_input_file(filename="sample_input.txt"):
     try:
@@ -101,6 +97,7 @@ def read_input_file(filename="sample_input.txt"):
         print(f"File error: {e}")
         return ""
 
+# Bring everything together
 def main():
     print("=== Data Extraction ===")
     text = read_input_file()
@@ -116,6 +113,7 @@ def main():
         print(f"\n{data_type}:")
         for i, value in enumerate(values, 1):
             print(f"  {i}. {value}")
+
 
 if __name__ == '__main__':
     main()
